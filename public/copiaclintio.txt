@@ -1,0 +1,18 @@
+var socket= io.connect('http://localhost:8080');
+
+
+socket.on('mensajeschat', function(datos){
+	alert('informacion a meter: ' + datos.info);
+	
+});
+
+
+
+$(document).ready(function(){
+	$('#chatformu').submit(function(e){
+			alert('eeeh');
+
+		var mensaje=$('#chatmensaje').val();
+		socket.emit('mensajeschat',{info: mensaje});
+	});
+});
